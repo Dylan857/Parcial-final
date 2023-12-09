@@ -1,0 +1,68 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <h2>Crear un usuario</h2>
+    <div class="card">
+        <div class="card-body">
+            <form (ngSubmit)="createProduct()" [formGroup]="newProduct">
+                <div class="mb-2">
+                    <label class="form-label">
+                        Nombre del producto
+                    </label>
+                    <input type="text" formControlName="name" class="form-control" name="name"
+                        placeholder="Ingrese su nombre">
+                    <div class="alert alert-danger mt-2" [hidden]="name?.valid || name?.pristine">
+                        <span *ngIf="name?.errors?.['required']">
+                            El nombre es obligatorio
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        Unidades
+                    </label>
+                    <input type="number" formControlName="stock" class="form-control" name="lastName"
+                        placeholder="Ingrese la cantidad de unidades">
+
+                    <div class="alert alert-danger mt-2" [hidden]="stock?.valid || stock?.pristine">
+                        <span *ngIf="stock?.errors?.['required']">
+                            Las unidades es obligatoria
+                        </span>
+                    </div>
+
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">
+                        Precio
+                    </label>
+                    <input type="number" formControlName="value" class="form-control" name="value"
+                        placeholder="Ingrese el valor del producto">
+
+                    <div class="alert alert-danger mt-2" [hidden]="value?.valid || value?.pristine">
+                        <span *ngIf="value?.errors?.['required']">
+                            El email es obligatorio
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        Tipo de producto
+                    </label>
+                    <select class="form-control" formControlName="productTypeId">
+                        <option value="">Seleccione un tipo de producto</option>
+                        <option *ngFor="let role of roles" [value]="role.producTypeId">{{role.description}}</option>
+                    </select>
+
+                    <div class="alert alert-danger mt-2" [hidden]="productTypeIdForm?.valid || productTypeIdForm?.pristine">
+                        <span *ngIf="productTypeIdForm?.errors?.['required']">
+                            El tipo de producto es obligatorio
+                        </span>
+                    </div>
+                    <button class="btn btn-primary mt-2" [disabled]="newProduct.invalid">Crear
+                        producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

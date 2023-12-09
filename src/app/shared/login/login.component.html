@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Formulario de login</h2>
+    <div class="card">
+        <div class="card-body">
+            <form (ngSubmit)="loguearse()" [formGroup]="formUser">
+                <div class="mb-2">
+                    <label class="form-label">
+                        Email
+                    </label>
+                    <input type="text" formControlName="username" class="form-control" name="username" placeholder="Ingrese su email">
+                
+                    <div class="alert alert-danger mt-2" [hidden]="username?.valid || username?.pristine">
+                        <span *ngIf="username?.errors?.['required']">
+                            El email es obligatorio
+                        </span>
+
+                        <span *ngIf="username?.errors?.['email']">
+                            El email debe ser valido
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        Contraseña
+                    </label>
+                    <input type="password" formControlName="password" class="form-control" name="password" placeholder="Ingrese la contraseña">
+                </div>
+                <div class="alert alert-danger mt-2" [hidden]="password?.valid || password?.pristine">
+                    La contraseña es obligatoria
+                </div>
+                <button class="btn btn-primary mt-2" [disabled]="formUser.invalid">Iniciar sesion</button>
+            </form>
+        </div>
+    </div>
+</div>

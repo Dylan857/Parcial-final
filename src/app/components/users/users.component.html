@@ -1,0 +1,34 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <h1>Usuarios registrados en el sistema</h1>
+
+    <button class="btn btn-primary" [routerLink]="['/create-user']">Crear usuario</button>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th hidden>ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Email</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Pais</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <th hidden>{{user.userId}}</th>
+                <th>{{ user.firstName }}</th>
+                <th>{{ user.lastName }}</th>
+                <th>{{ user.phone }}</th>
+                <th>{{ user.email }}</th>
+                <th>{{ user.address }}</th>
+                <th>{{ user.city }}</th>
+                <th>{{ user.country }}</th>
+                <th><button class="btn btn-danger" (click)="deleteUser(user.userId)">Eliminar</button><button style="margin-left: 5px;" class="btn btn-warning" (click)="goToEditUser(user.userId)">Editar</button></th>
+            </tr>
+        </tbody>
+    </table>
+</div>

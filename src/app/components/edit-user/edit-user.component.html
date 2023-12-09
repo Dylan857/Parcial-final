@@ -1,0 +1,158 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <h2>Editar un usuario</h2>
+    <div class="card">
+        <div class="card-body">
+            <form (ngSubmit)="editar()" [formGroup]="formUser">
+                <input type="hidden" formControlName="id" name="id">
+                <div class="mb-2">
+                    <label class="form-label">
+                        Nombre
+                    </label>
+                    <input type="text" formControlName="firstName" class="form-control" name="name"
+                        placeholder="Ingrese su nombre">
+                    <div class="alert alert-danger mt-2" [hidden]="firstName?.valid || firstName?.pristine">
+                        <span *ngIf="firstName?.errors?.['required']">
+                            El nombre es obligatorio
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        Segundo nombre
+                    </label>
+                    <input type="text" formControlName="middleName" class="form-control" name="middleName"
+                        placeholder="Ingrese su segundo nombre">
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        Apellido
+                    </label>
+                    <input type="text" formControlName="lastName" class="form-control" name="lastName"
+                        placeholder="Ingrese su apellido">
+
+                    <div class="alert alert-danger mt-2" [hidden]="lastName?.valid || lastName?.pristine">
+                        <span *ngIf="lastName?.errors?.['required']">
+                            El apellido es obligatorio
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        Segundo apellido
+                    </label>
+                    <input type="text" formControlName="secondSurname" class="form-control" name="secondSurname"
+                        placeholder="Ingrese su segundo apellido">
+
+                    <div class="mb-2">
+                        <label class="form-label">
+                            Email
+                        </label>
+                        <input type="text" formControlName="email" class="form-control" name="email"
+                            placeholder="Ingrese su email">
+
+                        <div class="alert alert-danger mt-2" [hidden]="email?.valid || email?.pristine">
+                            <span *ngIf="email?.errors?.['required']">
+                                El email es obligatorio
+                            </span>
+
+                            <span *ngIf="email?.errors?.['email']">
+                                El email debe ser valido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">
+                            Celular
+                        </label>
+                        <input type="text" formControlName="phone" class="form-control" name="phone"
+                            placeholder="Ingrese su numero de telefono">
+
+                        <div class="alert alert-danger mt-2" [hidden]="phone?.valid || phone?.pristine">
+                            <span *ngIf="phone?.errors?.['required']">
+                                El telefono es obligatorio
+                            </span>
+
+                            <span *ngIf="phone?.errors?.['pattern']">
+                                El numero no es valido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">
+                            Direccion
+                        </label>
+                        <input type="text" formControlName="address" class="form-control" name="address"
+                            placeholder="Ingrese su direccion">
+
+                        <div class="alert alert-danger mt-2" [hidden]="address?.valid || address?.pristine">
+                            <span *ngIf="address?.errors?.['required']">
+                                La direccion es obligatoria
+                            </span>
+
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">
+                                Rol
+                            </label>
+                            <select class="form-control" formControlName="roleId">
+                                <option value="">Seleccione un rol</option>
+                                <option *ngFor="let role of roles" [value]="role.roleId">{{role.description}}</option>
+                            </select>
+
+                            <div class="alert alert-danger mt-2" [hidden]="roleId?.valid || roleId?.pristine">
+                                <span *ngIf="roleId?.errors?.['required']">
+                                    El rol es obligatario
+                                </span>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label">
+                                    Pais
+                                </label>
+                                <select class="form-control" formControlName="countryId">
+                                    <option value="">Seleccione un pais</option>
+                                    <option *ngFor="let country of countries" [value]="country.countryId">
+                                        {{country.description}}</option>
+                                </select>
+
+                                <div class="alert alert-danger mt-2" [hidden]="countryId?.valid || countryId?.pristine">
+                                    <span *ngIf="countryId?.errors?.['required']">
+                                        El pais es obligatario
+                                    </span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">
+                                        Ciudad
+                                    </label>
+                                    <select class="form-control" formControlName="cityId">
+                                        <option value="">Seleccione una ciudad</option>
+                                        <option *ngFor="let city of cities" [value]="city.cityId">{{city.description}}
+                                        </option>
+                                    </select>
+
+                                    <div class="alert alert-danger mt-2" [hidden]="cityId?.valid || cityId?.pristine">
+                                        <span *ngIf="cityId?.errors?.['required']">
+                                            La ciudad es obligatoria
+                                        </span>
+
+                                    </div>
+                                    <button class="btn btn-primary mt-2" [disabled]="formUser.invalid">Editar
+                                        usuario</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

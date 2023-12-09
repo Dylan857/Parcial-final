@@ -1,0 +1,28 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <h1>Usuarios registrados en el sistema</h1>
+
+    <button class="btn btn-primary" [routerLink]="['/create-products']">Crear producto</button>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th hidden>ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Unidades</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Tipo de producto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <th hidden>{{product.productId}}</th>
+                <th>{{product.name}}</th>
+                <th>{{product.stock}}</th>
+                <th>{{product.value}}</th>
+                <th>{{product.productType}}</th>
+             <th><button class="btn btn-danger" (click)="deleteProduct(product.productId)">Eliminar</button><button style="margin-left: 5px;" class="btn btn-warning" (click)="goToEditProduct(product.productId)">Editar</button></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
