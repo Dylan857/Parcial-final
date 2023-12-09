@@ -4,6 +4,7 @@
     <div class="card">
         <div class="card-body">
             <form (ngSubmit)="createProduct()" [formGroup]="newProduct">
+                <input type="hidden" formControlName="id" name="id">
                 <div class="mb-2">
                     <label class="form-label">
                         Nombre del producto

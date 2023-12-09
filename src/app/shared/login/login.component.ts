@@ -42,7 +42,7 @@ export class LoginComponent {
             timer: 3000,
             timerProgressBar: true
           });
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/users']);
         } else if (response.data[0]['role'] == this.ROLE_USER) {
           this.router.navigate(['/user']);
         }

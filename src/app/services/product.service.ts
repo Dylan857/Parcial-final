@@ -32,4 +32,8 @@ export class ProductService {
   getProductsTypes(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.apiUrlProductsTypes + 'get_product_type');
   }
+
+  getProduct(productId: string): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.apiUrl + 'get_product/' + productId)
+  }
 }
